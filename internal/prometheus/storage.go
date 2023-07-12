@@ -42,9 +42,9 @@ type StorageSLO struct {
 // split and store as 2 different groups the alerts and the recordings, if true
 // it will be save as a single group.
 func (i IOWriterGroupedRulesYAMLRepo) StoreSLOs(ctx context.Context, slos []StorageSLO) error {
-	if len(slos) == 0 {
-		return fmt.Errorf("slo rules required")
-	}
+	// if len(slos) == 0 {
+	// 	return fmt.Errorf("slo rules required")
+	// }
 
 	ruleGroups := ruleGroupsYAMLv2{}
 	for _, slo := range slos {
@@ -72,9 +72,9 @@ func (i IOWriterGroupedRulesYAMLRepo) StoreSLOs(ctx context.Context, slos []Stor
 
 	// If we don't have anything to store, error so we can increase the reliability
 	// because maybe this was due to an unintended error (typos, misconfig, too many disable...).
-	if len(ruleGroups.Groups) == 0 {
-		return ErrNoSLORules
-	}
+	// if len(ruleGroups.Groups) == 0 {
+	// 	return ErrNoSLORules
+	// }
 
 	// Convert to YAML (Prometheus rule format).
 	rulesYaml, err := yaml.Marshal(ruleGroups)
