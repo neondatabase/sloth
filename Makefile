@@ -46,6 +46,11 @@ build-dev-image:  ## Builds the development docker image.
 build: build-dev-image ## Builds the production binary.
 	@$(DOCKER_RUN_CMD) /bin/sh -c '$(BUILD_BINARY_CMD)'
 
+build-native: build-dev-image ## Builds the production binary for the current OS/ARCH.
+	@$(DOCKER_RUN_CMD) /bin/sh -c 'VERSION=${VERSION} ./scripts/build/bin/build-raw.sh'
+	@stat ./bin/sloth
+	echo "SUCCESS: sloth native binary is in ./bin/sloth"
+
 build-all: build-dev-image ## Builds all archs production binaries.
 	@$(DOCKER_RUN_CMD) /bin/sh -c '$(BUILD_BINARY_ALL_CMD)'
 
