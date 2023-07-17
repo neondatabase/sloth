@@ -53,9 +53,9 @@ func (y YAMLSpecLoader) LoadSpec(ctx context.Context, data []byte) (*SLOGroup, e
 	}
 
 	// Check at least we have one SLO.
-	if len(s.SLOs) == 0 {
-		return nil, fmt.Errorf("at least one SLO is required")
-	}
+	// if len(s.SLOs) == 0 {
+	// 	return nil, fmt.Errorf("at least one SLO is required")
+	// }
 
 	m, err := y.mapSpecToModel(ctx, s)
 	if err != nil {
