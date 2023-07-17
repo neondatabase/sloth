@@ -13,7 +13,6 @@ jobs:
   tagged-release-binaries:
     # Only on tags.
     if: startsWith(github.ref, 'refs/tags/')
-    needs: tests
     name: Tagged release binaries
     runs-on: ubuntu-latest
     steps:
