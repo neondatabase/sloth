@@ -9,7 +9,7 @@ jobs:
     # Only on tags.
     if: startsWith(github.ref, 'refs/tags/')
     name: Tagged release binaries
-    runs-on: ubuntu-latest
+    runs-on: [ self-hosted, gen3, small ]
     steps:
       - run: echo "VERSION=${GITHUB_REF#refs/*/}" >> ${GITHUB_ENV} # Sets VERSION env var.
       - uses: actions/checkout@v3
